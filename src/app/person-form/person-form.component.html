@@ -1,0 +1,30 @@
+<form [formGroup]="personForm" (ngSubmit)="onSubmit()">
+  <h2>{{ editMode ? 'Person bearbeiten' : 'Person hinzufügen' }}</h2>
+  
+  <div class="form-group">
+    <label for="vorname">Vorname</label>
+    <input type="text" class="form-control" id="vorname" formControlName="vorname">
+    <div *ngIf="personForm.get('vorname')?.invalid">
+      <p class="text-danger">Vorname ist erforderlich.</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="nachname">Nachname</label>
+    <input type="text" class="form-control" id="nachname" formControlName="nachname">
+    <div *ngIf="personForm.get('nachname')?.invalid">
+      <p class="text-danger">Nachname ist erforderlich.</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" id="email" formControlName="email">
+    <div *ngIf="personForm.get('email')?.invalid">
+      <p class="text-danger">Email ist erforderlich und muss ein gültiges Format haben.</p>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">{{ editMode ? 'Speichern' : 'Hinzufügen' }}</button>
+  <button [routerLink]="['/']">Zürück</button>
+
+</form>
+
+

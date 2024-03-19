@@ -1,0 +1,22 @@
+
+<h2>Personenliste</h2>
+<h3>Klicken Sie auf den Namen, um Details anzuzeigen</h3>
+<ul class="list-group">
+  <li *ngFor="let person of persons" class="list-group-item" (click)="onPersonSelected(person.id)">
+   {{ person.id }} - {{ person.vorname }} {{ person.nachname }}
+   <button (click)="deletePerson(person.id)">Delete</button>
+  </li>
+</ul>
+<button [routerLink]="['/']">Zürück</button>
+
+
+<div *ngIf="selectedPerson != undefined">
+  <h2>Details</h2>
+  <p>ID: {{ selectedPerson.id }} <br>
+    Email: {{ selectedPerson.email }}
+    <br>
+    Vorname: {{ selectedPerson.vorname }}
+    <br>
+    Nachname: {{ selectedPerson.nachname }}
+  </p>
+</div>
